@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Search Box</title>
+  <style>
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Search Box</h1>
+  <input type="text" id="search-input" placeholder="Search...">
+  <div id="results"></div>
+
+  <script>
+    // Create a function to search for items by ID
+    function searchById(id) {
+      // Get the search input element
+      const searchInput = document.getElementById('search-input');
+
+      // Get the value of the search input
+      const searchTerm = searchInput.value.toLowerCase();
+
+      // Get all elements with the specified ID
+      const elements = document.querySelectorAll(`[id="${id}"]`);
+
+      // Clear the results div
+      document.getElementById('results').innerHTML = '';
+
+      // Loop through the elements and display any that match the search term
+      for (const element of elements) {
+        const elementText = element.textContent.toLowerCase();
+        if (elementText.includes(searchTerm)) {
+          document.getElementById('results').innerHTML += `<p>${elementText}</p>`;
+        }
+      }
+    }
+
+    // Add an event listener to the search input element
+    document.getElementById('search-input').addEventListener('keyup', function() {
+      // Search for items by ID when the user releases a key on the keyboard
+      searchById('my-id');
+    });
+  </script>
+</body>
+</html>

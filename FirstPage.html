@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GreenWay Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" type="text/css" href="First.css">
+    <script>
+        function Warn(str) {
+	alert (str+" Field cannot be empty!");
+	
+ }
+
+function validateForm(){
+ var name = document.getElementsById("name").value;
+ var email = document.getElementById("email").value;
+ var password = document.getElementById("pass").value;
+ var mobile = document.getElementById("mob").value;
+
+ console.log(name);
+ // Regular expressions for email and password validation
+ var emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+ const nameRegex = /^[A-Za-z]{6,}$/;
+
+ var errors = [];
+
+ if(nameRegex.test(name)!=true){
+	 alert("name field error")
+	 return false;
+ }
+
+ if(email !="" || email!=null){
+	 if(emailRegex.test(email)!=true){
+	 errors.push("invalid email address");
+	 alert("enter email")
+	 return false;
+	 }
+ }
+
+ if(password=='' || password==null){
+	 alert("enter password")
+	 return false;
+ }else if(password.length<6){
+	 alert("password is short");
+	 return false;
+ }
+
+ if(mobile=="" || mobile==null){
+	 alert("enter mobile no.")
+	 errors.push("enter mobile no..");
+	 return false;
+ }else if(mobile.length<10 || mobile.length>10){
+	 alert("invalid mob no");
+	 return false;
+
+ }
+
+ return true;
+}
+
+function reset(){
+ document.getElementById("name").value = "";
+ document.getElementById("email").value = "";
+ document.getElementById("password").value = "";
+ document.getElementById("mob").value = "";
+
+
+}
+    </script>
+
+</head>
+<body>
+    <div class="outerbx">
+        <div class="leftone">
+            <div class="logo">
+                <h2 style="color: #1DB8CD; font-weight: bold; font-family: cursive; font-size: 72px;">Green</h2>
+                <h2 style="color: #ffffff; font-weight: bold; font-family: cursive; font-size: 72px; margin-top: -30px;">way</h2>
+                <h2 style="color: #ffffff; font-weight: bold; font-family: cursive; font-size: 16px;margin-top: -5px;">future lead by Us..</h2>
+            </div>
+            <div class="connect">
+                <a href="https://web.whatsapp.com"><i class="fa-brands fa-facebook" style="color: #ffffff; font-size: 22px; margin-right: 20px;"></i>
+                <a href="https://web.whatsapp.com"><i class="fa-brands fa-instagram" style="color: #ffffff;font-size: 22px; margin-right: 20px;"></i></a>
+                <a href="https://web.whatsapp.com"><i class="fa-brands fa-twitter" style="color: #ffffff;font-size: 22px; margin-right: 20px;"></i></a>
+                <a href="https://web.whatsapp.com"><i class="fa-brands fa-whatsapp" style="color: #ffffff;font-size: 22px; margin-right: 20px;"></i></a>
+            </div>
+        </div>
+        <div class="formbx">
+            <form  id="Signup" onsubmit="validateForm()">
+                <hr id="line">
+                <br>
+                <label for="name" style="font-family: cursive;">Name</label><br>
+                <input type="text" class="inputbx" id="name" name="name"><br>
+                
+                <br>
+                <label for="name">email</label><br>
+                <input type="text" class="inputbx" name="email" id="email"><br>
+                
+                <br>
+                <label for="name">Password</label><br>
+                <input type="password" class="inputbx" id="pass" name="pass"><br>
+                <br>
+                <label for="name">Mobile</label><br>
+                <input type="number" class="inputbx" name="mob" id="mob"><br>
+                <br>
+                <input type="submit">
+            </form>
+        </div>
+    </div>
+
+  
+</body>
+</html>

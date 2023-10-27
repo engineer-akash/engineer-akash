@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <script src="validation.js"></script>
+    <title>Board Login</title>
+    <style>
+        body{
+            color: white;
+            background-image: url("bg1.png");
+            background-repeat: no-repeat;
+            background-size: cover;
+
+        }
+        ::placeholder {
+        color: rgb(0, 0, 0);
+        opacity: 1; /* Firefox */
+}
+
+::-ms-input-placeholder { /* Edge 12 -18 */
+  color: rgb(15, 15, 15);
+}
+        
+        .outbx{
+            width: 450px;
+            height: 500px;
+            border: 1px solid rgb(255, 255, 255);
+            box-shadow: 5px 5px 30px rgb(60, 58, 58);
+            margin-left: 40px;
+            margin-top: 40px;
+            align-items: center;
+            padding-left: 10px;
+            border-radius: 20px;
+            padding-top: 2px;
+        }
+        input[type=text], input[type=password] {
+    width:420px;
+    font-size: 16px;
+   margin-bottom: 10px;
+   border: 1px solid white;
+   border-radius: 10px;
+   color: white;
+   margin-top: 5px;
+   display: inline-block;
+   background: transparent;
+   border: 1px solid gray;
+   
+}
+        input[type=email], input[type=tel]{
+            width:420px;
+            font-size: 16px;
+            background: transparent;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            color: white;
+            border: 1px solid white;
+            margin-top: 5px;
+            display: inline-block;
+            border: 1px solid gray;
+  
+        }
+
+        input[type=submit]{
+            width: 200px;
+            font-size: 18px;
+            background-color: lightgreen;
+            border: none;
+            margin-top: 30px;
+            margin-left: 100px;
+            border-radius: 10px;
+        }
+    
+
+        input[type=reset]{
+            margin-top: 30px;
+            margin-left: 100px;
+            background-color: aquamarine;
+            border-radius: 10px;
+            width: 200px;
+            font-size: 18px;
+            border: none;
+        }
+    </style>
+    <script>
+function Warn(str) {
+               alert (str+" Field cannot be empty!");
+               
+            }
+
+        function validateForm(){
+            var name = document.getElementById("name").value;
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+            var mobile = document.getElementById("mob").value;
+
+            // Regular expressions for email and password validation
+            var emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+            const nameRegex = /^[A-Za-z]{6,}$/;
+
+            var errors = [];
+
+            if(nameRegex.test(name)!=true){
+                alert("name field error")
+                return false;
+            }
+
+            if(email !="" || email!=null){
+                if(emailRegex.test(email)!=true){
+                errors.push("invalid email address");
+                alert("enter email")
+                return false;
+                }
+            }
+
+            if(password=='' || password==null){
+                alert("enter password")
+                return false;
+            }else if(password.length<6){
+                alert("password is short");
+                return false;
+            }
+
+            if(mobile=="" || mobile==null){
+                alert("enter mobile no.")
+                errors.push("enter mobile no..");
+                return false;
+            }else if(mobile.length<10 || mobile.length>10){
+                alert("invalid mob no");
+                return false;
+
+            }
+
+            return true;
+        }
+
+        function reset(){
+            document.getElementById("name").value = "";
+            document.getElementById("email").value = "";
+            document.getElementById("password").value = "";
+            document.getElementById("mob").value = "";
+
+
+        }
+    </script>
+</head>
+<body>
+    <div class="outbx">
+        <h2>Login</h2>        
+        <form id="formOne" onsubmit="return validateForm()" action="SecondPage.html"target="_parent">
+            <label for="fname"><b>First Name</b></label><br>
+            <input type="text"placeholder="enter firstname" id="name" name="fname" style="border-width: 1px ; border-color: white;">
+            <br>
+            <label for="email"><b>email</b></label><br>
+            <input type="email"placeholder="your email" id="email"  name="email"  style="border-width: 1px ; border-color: white;">
+            <br>
+            <label for="pass"><b>Password</b></label><br>
+            <input type="password"placeholder="enter password" id="password"  name="pass" style="border-width: 1px ; border-color: white;">
+            <br>
+            <label for="mobile"><b>Mobile No</b></label><br>
+            <input type="tel"placeholder="enter mobile no." id="mob" name="mobile" style="border-width: 1px ; border-color: white;"">
+            <br>
+            <input type="submit">
+            <br>
+            <input type="reset" id="reset">
+        </form>
+    </div>
+    
+</body>
+</html>
